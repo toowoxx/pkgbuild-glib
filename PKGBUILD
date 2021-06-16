@@ -3,7 +3,7 @@
 
 pkgname=glib
 pkgver=1.2.10
-pkgrel=16
+pkgrel=18
 pkgdesc="Common C routines used by Gtk+ and other libs"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://www.gtk.org/"
@@ -37,7 +37,7 @@ build() {
   fi
 
   autoreconf --force --install
-  ./configure --prefix=/usr --mandir=/usr/share/man \
+  CFLAGS="-Wno-format-security" ./configure --prefix=/usr --mandir=/usr/share/man \
     --infodir=/usr/share/info $CONFIGFLAG
   make
 }
